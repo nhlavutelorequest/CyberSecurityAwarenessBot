@@ -2,9 +2,9 @@
 
 <img width="1358" height="606" alt="workflow pass screenshot" src="https://github.com/user-attachments/assets/ce2354c4-a368-494a-8f9d-376004d70bdb" />
 
-## 🔐 CyberSecurity Awareness Chatbot (Part 1)
+##  CyberSecurity Awareness Chatbot (Part 1)
 
-## 📌 Project Overview
+##  Project Overview
 This project is a Cybersecurity Awareness Chatbot developed using C# in Visual Studio.  
 The main goal of the chatbot is to educate users about common cybersecurity threats and how to stay safe online.
 
@@ -12,7 +12,7 @@ The chatbot interacts with users through a console-based interface and provides 
 
 
 
-## 🎯 Objectives
+##  Objectives
 - Educate users about cybersecurity topics
 - Demonstrate programming concepts in C#
 - Build an interactive chatbot system
@@ -20,14 +20,14 @@ The chatbot interacts with users through a console-based interface and provides 
 
 
 
-## 🧠 Features (Part 1)
+##  Features (Part 1)
 
-### ✅ User Interaction
+###  User Interaction
 - Accepts user input continuously
 - Responds to questions based on keywords
 - Personalised greeting using the user's name
 
-### ✅ Cybersecurity Education
+###  Cybersecurity Education
 The chatbot provides detailed information on:
 - Password Safety
 - Phishing Attacks
@@ -44,21 +44,21 @@ Each response includes:
 
 
 
-### 🔊 Voice Integration
+###  Voice Integration
 - Plays a `.wav` greeting sound when the program starts
 - Implemented using `SoundPlayer` from `System.Media`
 - Includes error handling for missing files
 
 
 
-### 🎨 User Interface Enhancements
+###  User Interface Enhancements
 - ASCII logo displayed at startup
 - Typing effect using `Thread.Sleep()` for better user experience
 - Use of colours to distinguish user and bot messages
 
 
 
-## 🏗️ Project Structure
+##  Project Structure
 
 The project is organised into multiple classes:
 
@@ -90,7 +90,7 @@ The project is organised into multiple classes:
 
 
 
-## 🔄 How the Program Works
+##  How the Program Works
 1. The program starts in `Program.cs`
 2. The chatbot is launched using the `Start()` method
 3. A voice greeting is played
@@ -104,7 +104,7 @@ The project is organised into multiple classes:
 
 
 
-## 💡 Key Concepts Demonstrated
+##  Key Concepts Demonstrated
 - Object-Oriented Programming (OOP)
 - Methods and Classes
 - Loops (`while` loop)
@@ -115,7 +115,7 @@ The project is organised into multiple classes:
 
 
 
-## 🚀 Future Improvements (Part 2 & 3)
+##  Future Improvements (Part 2 & 3)
 - Store user messages using arrays or lists
 - Implement message searching and deletion
 - Add more advanced chatbot logic
@@ -123,11 +123,11 @@ The project is organised into multiple classes:
 
 
 
-## 👨‍💻 Author
+##  Author
 Malungani Request Nhlavutelo
 
-## 🎥 Demo Video
+##  Demo Video
 [Watch Here](YOUR_YOUTUBE_LINK)
 
-## 📎 Notes
+##  Notes
 This project is part of a Programming POE and focuses on building a functional and educational chatbot system.
