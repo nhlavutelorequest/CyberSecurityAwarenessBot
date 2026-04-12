@@ -82,7 +82,7 @@ The project is organised into multiple classes:
 
 
 
-## ⚙️ Technologies Used
+##  Technologies Used
 - C# (.NET)
 - Visual Studio
 - System.Media (for audio)
