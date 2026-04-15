@@ -2,6 +2,9 @@
 
 <img width="1358" height="606" alt="workflow pass screenshot" src="https://github.com/user-attachments/assets/ce2354c4-a368-494a-8f9d-376004d70bdb" />
 
+##  Demo Video
+[Watch Here](YOUR_YOUTUBE_LINK)
+
 ##  CyberSecurity Awareness Chatbot (Part 1)
 
 ##  Project Overview
@@ -126,8 +129,7 @@ The project is organised into multiple classes:
 ##  Author
 Malungani Request Nhlavutelo
 
-##  Demo Video
-[Watch Here](YOUR_YOUTUBE_LINK)
+
 
 ##  Notes
 This project is part of a Programming POE and focuses on building a functional and educational chatbot system.
