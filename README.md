@@ -30,7 +30,7 @@ The application was enhanced from Part 1 into a more intelligent and interactive
 # GitHub Repository
 
 ## View Project
-### [View Project Here](PASTE_YOUR_GITHUB_LINK_HERE)
+### [View Project Here](https://github.com/nhlavutelorequest/CyberSecurityAwarenessBot.git)
 
 # YouTube Demonstration Video
 
