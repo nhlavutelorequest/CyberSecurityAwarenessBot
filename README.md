@@ -30,11 +30,11 @@ The application was enhanced from Part 1 into a more intelligent and interactive
 # GitHub Repository
 
 ## View Project
-### [View Project](PASTE_YOUR_GITHUB_LINK_HERE)
+### [View Project Here](PASTE_YOUR_GITHUB_LINK_HERE)
 
 # YouTube Demonstration Video
 
-### [Watch Me](PASTE_YOUR_UNLISTED_YOUTUBE_LINK_HERE)
+### [clink Here and Watch Me](PASTE_YOUR_UNLISTED_YOUTUBE_LINK_HERE)
 
 # Features Implemented in My Part 1
 
