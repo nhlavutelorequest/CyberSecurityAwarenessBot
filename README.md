@@ -34,7 +34,7 @@ The application was enhanced from Part 1 into a more intelligent and interactive
 
 # YouTube Demonstration Video
 
-### [clink Here and Watch the video](https://youtu.be/jFB7PFV62wc?si=97IyKBIleohrlQ00)
+### [click Here and Watch the video](https://youtu.be/jFB7PFV62wc?si=97IyKBIleohrlQ00)
 
 # Features Implemented in My Part 1
 
