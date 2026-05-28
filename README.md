@@ -29,15 +29,8 @@ The application was enhanced from Part 1 into a more intelligent and interactive
 
 # GitHub Repository
 
-(Add your GitHub repository link here)
-
-Example:
-
-```text
-https://github.com/yourusername/CyberSecurityAwarenessBot
-```
-
----
+## View Project
+[View Project](PASTE_YOUR_GITHUB_LINK_HERE)
 
 # YouTube Demonstration Video
 
