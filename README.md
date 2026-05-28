@@ -41,17 +41,12 @@ https://github.com/yourusername/CyberSecurityAwarenessBot
 
 # YouTube Demonstration Video
 
-(Add your unlisted YouTube video link here)
+# Demonstration Video
 
-Example:Watch Me
+## Watch Me
+[Watch Me](PASTE_YOUR_UNLISTED_YOUTUBE_LINK_HERE)
 
-```text
-https://youtube.com/your-video-link
-```
-
----
-
-# Features Implemented in Part 1
+# Features Implemented in My Part 1
 
 The following core features were developed during Part 1:
 
