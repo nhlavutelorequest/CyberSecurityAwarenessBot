@@ -1,81 +1,122 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CyberSecurityAwarenessBotGUI
 {
+    // =====================================================
+    // MEMORYMANAGER.CS  — Session Memory & Name Storage
+    // Remembers: user's name, topics asked, and question
+    // count so the bot can give personalised responses.
+    // =====================================================
+
     class MemoryManager
     {
-        // =========================================
-        // LIST USED TO STORE USER INTERESTS
-        // Example:
-        // Passwords, Phishing, Malware
-        // =========================================
+        // --------------------------------------------------
+        // USER NAME  (remembered for the whole session)
+        // --------------------------------------------------
+        public static string UserName { get; private set; } = null;
 
+        // --------------------------------------------------
+        // TOPIC LIST  — stores unique cybersecurity topics
+        // --------------------------------------------------
         public static List<string> UserInterests = new List<string>();
 
+        // --------------------------------------------------
+        // QUESTION COUNTER
+        // --------------------------------------------------
+        private static int _questionCount = 0;
+        public static int QuestionCount => _questionCount;
 
-        // =========================================
-        // METHOD: SAVE USER INTEREST
-        // This method stores topics the user asks about
-        // =========================================
 
+        // ==================================================
+        // SAVE USER NAME
+        // Call this the moment a name is detected in input.
+        // ==================================================
+        public static void SaveName(string name)
+        {
+            if (!string.IsNullOrWhiteSpace(name))
+                UserName = CapitaliseName(name.Trim());
+        }
+
+
+        // ==================================================
+        // SAVE TOPIC INTEREST  (no duplicates)
+        // ==================================================
         public static void SaveInterest(string topic)
         {
-            // Prevent duplicate topics
             if (!UserInterests.Contains(topic))
-            {
                 UserInterests.Add(topic);
-            }
         }
 
 
-        // =========================================
-        // METHOD: RETURN ALL REMEMBERED TOPICS
-        // =========================================
+        // ==================================================
+        // INCREMENT QUESTION COUNTER
+        // ==================================================
+        public static void IncrementQuestion()
+        {
+            _questionCount++;
+        }
 
+
+        // ==================================================
+        // GET PERSONALISED GREETING PREFIX
+        // Returns "Hey Alex, " or "" if no name known.
+        // ==================================================
+        public static string GetNamePrefix()
+        {
+            return string.IsNullOrEmpty(UserName) ? "" : UserName + ", ";
+        }
+
+
+        // ==================================================
+        // GET FULL MEMORY RECALL RESPONSE
+        // ==================================================
         public static string GetInterests()
         {
-            // Check if nothing has been stored
+            string nameInfo = string.IsNullOrEmpty(UserName)
+                ? "I don't know your name yet — tell me by saying \"My name is [name]\"."
+                : "I remember your name is " + UserName + ".";
+
+            string topicInfo;
             if (UserInterests.Count == 0)
             {
-                return "I do not remember any cybersecurity interests yet.";
+                topicInfo = "You haven't asked about any specific cybersecurity topics yet this session.";
+            }
+            else
+            {
+                topicInfo = "You have asked about the following topic(s) this session: "
+                            + string.Join(", ", UserInterests) + ".";
             }
 
-            // Return remembered topics
-            return "I remember that you previously asked about: " +
-                   string.Join(", ", UserInterests) +
-                   ".";
+            string countInfo = "You have sent " + _questionCount + " message(s) so far this session.";
+
+            return nameInfo + Environment.NewLine +
+                   topicInfo + Environment.NewLine +
+                   countInfo;
         }
 
 
-        // =========================================
-        // METHOD: CLEAR MEMORY
-        // Allows chatbot memory reset
-        // =========================================
-
+        // ==================================================
+        // CLEAR ALL MEMORY  (used by Clear button)
+        // ==================================================
         public static void ClearMemory()
         {
+            UserName = null;
+            _questionCount = 0;
             UserInterests.Clear();
         }
 
 
-        // =========================================
-        // METHOD: CHECK IF TOPIC EXISTS
-        // Returns true or false
-        // =========================================
+        // ==================================================
+        // HELPERS
+        // ==================================================
+        public static bool HasInterest(string topic) => UserInterests.Contains(topic);
+        public static int TotalInterests() => UserInterests.Count;
 
-        public static bool HasInterest(string topic)
+        private static string CapitaliseName(string name)
         {
-            return UserInterests.Contains(topic);
-        }
-
-
-        // =========================================
-        // METHOD: COUNT SAVED TOPICS
-        // =========================================
-
-        public static int TotalInterests()
-        {
-            return UserInterests.Count;
+            if (string.IsNullOrEmpty(name)) return name;
+            return char.ToUpper(name[0]) + name.Substring(1).ToLower();
         }
     }
 }
