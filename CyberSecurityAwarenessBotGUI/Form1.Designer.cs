@@ -37,24 +37,24 @@
             // 
             // rtbChat
             // 
-            this.rtbChat.Location = new System.Drawing.Point(12, 90);
+            this.rtbChat.Location = new System.Drawing.Point(12, 49);
             this.rtbChat.Name = "rtbChat";
-            this.rtbChat.Size = new System.Drawing.Size(984, 150);
+            this.rtbChat.Size = new System.Drawing.Size(984, 255);
             this.rtbChat.TabIndex = 0;
             this.rtbChat.Text = "";
             // 
             // txtUserInput
             // 
-            this.txtUserInput.Location = new System.Drawing.Point(40, 260);
+            this.txtUserInput.Location = new System.Drawing.Point(27, 323);
             this.txtUserInput.Name = "txtUserInput";
-            this.txtUserInput.Size = new System.Drawing.Size(831, 20);
+            this.txtUserInput.Size = new System.Drawing.Size(917, 20);
             this.txtUserInput.TabIndex = 1;
             // 
             // btnSend
             // 
             this.btnSend.BackColor = System.Drawing.Color.SpringGreen;
             this.btnSend.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSend.Location = new System.Drawing.Point(84, 313);
+            this.btnSend.Location = new System.Drawing.Point(68, 360);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(182, 55);
             this.btnSend.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             this.btnClear.BackColor = System.Drawing.Color.SpringGreen;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(675, 313);
+            this.btnClear.Location = new System.Drawing.Point(721, 360);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(166, 55);
             this.btnClear.TabIndex = 3;
