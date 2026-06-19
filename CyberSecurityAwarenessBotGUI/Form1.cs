@@ -60,14 +60,11 @@ namespace CyberSecurityAwarenessBotGUI
         }
 
         // =========================================
-        // SEND BUTTON
+        // SEND BUTTON  (merged handler — NLP + sentiment + response)
         // =========================================
         private void btnSend_Click(object sender, EventArgs e)
         {
             string userInput = txtUserInput.Text.Trim();
-
-            // Count messages
-            MemoryManager.IncrementQuestion();
 
             // =========================================
             // EMPTY INPUT CHECK
@@ -78,18 +75,67 @@ namespace CyberSecurityAwarenessBotGUI
                 return;
             }
 
+            // Count messages
+            MemoryManager.IncrementQuestion();
+
             // =========================================
             // DISPLAY USER MESSAGE
             // =========================================
-            rtbChat.AppendText(
-                "You: " + userInput +
-                Environment.NewLine);
+            rtbChat.AppendText("You: " + userInput + Environment.NewLine);
+
+            // =========================================
+            // NLP INTENT ROUTING
+            // =========================================
+            var intent = NlpEngine.DetectIntent(userInput);
+
+            switch (intent)
+            {
+                case NlpEngine.Intent.ShowLog:
+                    rtbChat.AppendText("CyberBot: " + ActivityLogger.GetFormattedLog()
+                        + Environment.NewLine + Environment.NewLine);
+                    ActivityLogger.Log("User requested activity log.");
+                    txtUserInput.Clear();
+                    return;
+
+                case NlpEngine.Intent.StartQuiz:
+                    ActivityLogger.Log("NLP: Detected quiz intent — opening quiz.");
+                    rtbChat.AppendText("CyberBot: Opening the cybersecurity quiz for you!"
+                        + Environment.NewLine + Environment.NewLine);
+                    using (var quiz = new Forms.QuizForm())
+                        quiz.ShowDialog();
+                    txtUserInput.Clear();
+                    return;
+
+                case NlpEngine.Intent.AddTask:
+                case NlpEngine.Intent.SetReminder:
+                    ActivityLogger.Log("NLP: Detected task/reminder intent — opening Task Manager.");
+                    rtbChat.AppendText(
+                        "CyberBot: I noticed you want to add a task or set a reminder. " +
+                        "Opening the Task Manager for you!" +
+                        Environment.NewLine + Environment.NewLine);
+                    using (var tasks = new Forms.TaskForm())
+                        tasks.ShowDialog();
+                    txtUserInput.Clear();
+                    return;
+
+                case NlpEngine.Intent.ViewTasks:
+                    ActivityLogger.Log("NLP: Detected view tasks intent — opening Task Manager.");
+                    using (var taskView = new Forms.TaskForm())
+                        taskView.ShowDialog();
+                    txtUserInput.Clear();
+                    return;
+
+                case NlpEngine.Intent.MemoryRecall:
+                    rtbChat.AppendText("CyberBot: " + MemoryManager.GetInterests()
+                        + Environment.NewLine + Environment.NewLine);
+                    txtUserInput.Clear();
+                    return;
+            }
 
             // =========================================
             // SENTIMENT DETECTION
             // =========================================
-            string sentimentResponse =
-                SentimentResponse.GetSentiment(userInput);
+            string sentimentResponse = SentimentResponse.GetSentiment(userInput);
 
             if (!string.IsNullOrEmpty(sentimentResponse))
             {
@@ -101,36 +147,23 @@ namespace CyberSecurityAwarenessBotGUI
             // =========================================
             // MEMORY STORAGE
             // =========================================
-
             if (userInput.ToLower().Contains("password"))
-            {
                 MemoryManager.SaveInterest("Passwords");
-            }
 
             if (userInput.ToLower().Contains("phishing"))
-            {
                 MemoryManager.SaveInterest("Phishing");
-            }
 
             if (userInput.ToLower().Contains("malware"))
-            {
                 MemoryManager.SaveInterest("Malware");
-            }
 
             if (userInput.ToLower().Contains("vpn"))
-            {
                 MemoryManager.SaveInterest("VPN");
-            }
 
             if (userInput.ToLower().Contains("scam"))
-            {
                 MemoryManager.SaveInterest("Scams");
-            }
 
             if (userInput.ToLower().Contains("safe browsing"))
-            {
                 MemoryManager.SaveInterest("Safe Browsing");
-            }
 
             // =========================================
             // MEMORY RECALL
@@ -149,19 +182,14 @@ namespace CyberSecurityAwarenessBotGUI
             }
 
             // =========================================
-            // GET CHATBOT RESPONSE
+            // GET & DISPLAY CHATBOT RESPONSE
             // =========================================
-            string botResponse =
-                ResponseManager.GetResponse(userInput);
+            string botResponse = ResponseManager.GetResponse(userInput);
 
-            // =========================================
-            // DISPLAY CHATBOT RESPONSE
-            // =========================================
             rtbChat.AppendText(
                 "CyberBot: " + botResponse +
                 Environment.NewLine + Environment.NewLine);
 
-            // Clear textbox
             txtUserInput.Clear();
         }
 
@@ -170,13 +198,9 @@ namespace CyberSecurityAwarenessBotGUI
         // =========================================
         private void btnClear_Click(object sender, EventArgs e)
         {
-            // Clear chat
             rtbChat.Clear();
-
-            // Clear memory system
             MemoryManager.ClearMemory();
 
-            // Display clear message
             rtbChat.AppendText(
                 "==================================================" + Environment.NewLine +
                 "Chat and memory cleared successfully." +
@@ -187,29 +211,53 @@ namespace CyberSecurityAwarenessBotGUI
             txtUserInput.Clear();
         }
 
+        // =========================================
+        // TASK TAB — Open Task Manager button
+        // =========================================
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ActivityLogger.Log("User opened Task Manager via Tasks tab.");
+            using (var form = new Forms.TaskForm())
+                form.ShowDialog();
+        }
+
+        // =========================================
+        // QUIZ TAB — Start Quiz button
+        // =========================================
+        private void btnStartQuiz_Click(object sender, EventArgs e)
+        {
+            ActivityLogger.Log("User started quiz via Quiz tab.");
+            using (var form = new Forms.QuizForm())
+                form.ShowDialog();
+        }
+
+        // =========================================
+        // ACTIVITY LOG TAB — Refresh Log button
+        // =========================================
+        private void btnRefreshLog_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            var entries = ActivityLogger.GetAllEntries();
+            int start = Math.Max(0, entries.Count - 10);
+            for (int i = start; i < entries.Count; i++)
+                listBox1.Items.Add(entries[i]);
+
+            ActivityLogger.Log("User refreshed activity log.");
+        }
+
+        // =========================================
+        // FORM LOAD
+        // =========================================
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void tabPage3_Click(object sender, EventArgs e)
         {
-
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnSend_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

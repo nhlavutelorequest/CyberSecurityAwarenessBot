@@ -7,12 +7,20 @@ namespace CyberSecurityAwarenessBotGUI.Data
 {
     public static class DatabaseManager
     {
+        // FIX: MySql.Data 9.7.0 renamed the SslMode enum members.
+        // "None" no longer exists - use "Disabled" instead (or drop SslMode
+        // entirely for localhost connections, since SSL isn't needed there).
+        //
+        // FIX 2: MySQL 8+ default auth plugin is "caching_sha2_password",
+        // which needs RSA key exchange. With SSL disabled, the connector
+        // blocks this unless AllowPublicKeyRetrieval=True is explicitly set.
         private const string ConnectionString =
             "Server=localhost;" +
             "Database=CyberBotDB;" +
             "Uid=root;" +
             "Pwd=Request@16$;" +
-            "SslMode=none;";
+            "SslMode=Disabled;" +
+            "AllowPublicKeyRetrieval=True;";
 
         // =========================================
         // TEST CONNECTION

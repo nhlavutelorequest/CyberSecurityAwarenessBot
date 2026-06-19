@@ -101,10 +101,12 @@
             this.btnClear.TabIndex = 8;
             this.btnClear.Text = "Clear Chat";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);  // FIX 1: was missing
             // 
             // btnSend
             // 
             this.btnSend.BackColor = System.Drawing.Color.SpringGreen;
+            this.btnSend.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSend.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSend.Location = new System.Drawing.Point(152, 349);
             this.btnSend.Name = "btnSend";
@@ -112,7 +114,7 @@
             this.btnSend.TabIndex = 7;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = false;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click_1);
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);    // FIX 2: was btnSend_Click_1
             // 
             // txtUserInput
             // 
@@ -149,7 +151,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Open Task Manager";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click);    // FIX 3: handler was empty
             // 
             // label2
             // 
@@ -190,6 +192,7 @@
             this.button2.TabIndex = 0;
             this.button2.Text = "Start Quiz";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnStartQuiz_Click); // FIX 4: was missing
             // 
             // tabPage4
             // 
@@ -211,6 +214,7 @@
             this.button3.TabIndex = 1;
             this.button3.Text = "Refresh Log";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btnRefreshLog_Click); // FIX 5: was missing
             // 
             // listBox1
             // 
@@ -264,4 +268,3 @@
         private System.Windows.Forms.ListBox listBox1;
     }
 }
-
