@@ -102,6 +102,7 @@ namespace CyberSecurityAwarenessBotGUI.Forms
             this.btnAddTask.Size = new System.Drawing.Size(100, 35);
             this.btnAddTask.TabIndex = 6;
             this.btnAddTask.Text = "Add Task";
+            this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);         // FIX: was missing
             // 
             // dgvTasks
             // 
@@ -119,6 +120,7 @@ namespace CyberSecurityAwarenessBotGUI.Forms
             this.btnMarkComplete.Size = new System.Drawing.Size(130, 30);
             this.btnMarkComplete.TabIndex = 8;
             this.btnMarkComplete.Text = "Mark Complete";
+            this.btnMarkComplete.Click += new System.EventHandler(this.btnMarkComplete_Click); // FIX: was missing
             // 
             // btnDeleteTask
             // 
@@ -127,6 +129,7 @@ namespace CyberSecurityAwarenessBotGUI.Forms
             this.btnDeleteTask.Size = new System.Drawing.Size(110, 30);
             this.btnDeleteTask.TabIndex = 9;
             this.btnDeleteTask.Text = "Delete Task";
+            this.btnDeleteTask.Click += new System.EventHandler(this.btnDeleteTask_Click);     // FIX: was missing
             // 
             // btnRefresh
             // 
@@ -135,6 +138,7 @@ namespace CyberSecurityAwarenessBotGUI.Forms
             this.btnRefresh.Size = new System.Drawing.Size(100, 30);
             this.btnRefresh.TabIndex = 10;
             this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);           // FIX: was missing
             // 
             // TaskForm
             // 
@@ -155,7 +159,6 @@ namespace CyberSecurityAwarenessBotGUI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dgvTasks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
     }
 }

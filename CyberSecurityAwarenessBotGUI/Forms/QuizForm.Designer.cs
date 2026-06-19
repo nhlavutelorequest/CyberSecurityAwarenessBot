@@ -98,6 +98,7 @@ namespace CyberSecurityAwarenessBotGUI.Forms
             this.btnSubmit.Size = new System.Drawing.Size(150, 35);
             this.btnSubmit.TabIndex = 6;
             this.btnSubmit.Text = "Submit Answer";
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click); // FIX: was missing
             // 
             // lblFeedback
             // 

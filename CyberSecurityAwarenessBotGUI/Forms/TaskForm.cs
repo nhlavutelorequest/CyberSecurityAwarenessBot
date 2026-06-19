@@ -24,31 +24,44 @@ namespace CyberSecurityAwarenessBotGUI.Forms
         // =========================================
         private void LoadTasks()
         {
-            var tasks = DatabaseManager.GetAllTasks();
+            try
+            {
+                var tasks = DatabaseManager.GetAllTasks();
 
-            dgvTasks.DataSource = null;
-            dgvTasks.DataSource = tasks;
+                dgvTasks.DataSource = null;
+                dgvTasks.DataSource = tasks;
 
-            if (dgvTasks.Columns["TaskId"] != null)
-                dgvTasks.Columns["TaskId"].Visible = false;
+                if (dgvTasks.Columns["TaskId"] != null)
+                    dgvTasks.Columns["TaskId"].Visible = false;
 
-            if (dgvTasks.Columns["ReminderDate"] != null)
-                dgvTasks.Columns["ReminderDate"].Visible = false;
+                if (dgvTasks.Columns["ReminderDate"] != null)
+                    dgvTasks.Columns["ReminderDate"].Visible = false;
 
-            if (dgvTasks.Columns["Title"] != null)
-                dgvTasks.Columns["Title"].HeaderText = "Task";
+                if (dgvTasks.Columns["Title"] != null)
+                    dgvTasks.Columns["Title"].HeaderText = "Task";
 
-            if (dgvTasks.Columns["Description"] != null)
-                dgvTasks.Columns["Description"].HeaderText = "Details";
+                if (dgvTasks.Columns["Description"] != null)
+                    dgvTasks.Columns["Description"].HeaderText = "Details";
 
-            if (dgvTasks.Columns["IsCompleted"] != null)
-                dgvTasks.Columns["IsCompleted"].HeaderText = "Done?";
+                if (dgvTasks.Columns["IsCompleted"] != null)
+                    dgvTasks.Columns["IsCompleted"].HeaderText = "Done?";
 
-            if (dgvTasks.Columns["CreatedAt"] != null)
-                dgvTasks.Columns["CreatedAt"].HeaderText = "Date Added";
+                if (dgvTasks.Columns["CreatedAt"] != null)
+                    dgvTasks.Columns["CreatedAt"].HeaderText = "Date Added";
 
-            if (dgvTasks.Columns["ReminderDisplay"] != null)
-                dgvTasks.Columns["ReminderDisplay"].HeaderText = "Reminder";
+                if (dgvTasks.Columns["ReminderDisplay"] != null)
+                    dgvTasks.Columns["ReminderDisplay"].HeaderText = "Reminder";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Could not load tasks from the database.\n\n" +
+                    "Make sure MySQL is running and the connection details in DatabaseManager.cs are correct.\n\n" +
+                    "Error: " + ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         // =========================================
@@ -56,22 +69,41 @@ namespace CyberSecurityAwarenessBotGUI.Forms
         // =========================================
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            DateTime? reminder = chkSetReminder.Checked
-                ? dtpReminder.Value
-                : (DateTime?)null;
+            if (string.IsNullOrWhiteSpace(txtTaskTitle.Text))
+            {
+                MessageBox.Show("Please enter a task title.", "Validation",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            DatabaseManager.AddTask(
-                txtTaskTitle.Text.Trim(),
-                txtTaskDescription.Text.Trim(),
-                reminder
-            );
+            try
+            {
+                DateTime? reminder = chkSetReminder.Checked
+                    ? dtpReminder.Value
+                    : (DateTime?)null;
 
-            MessageBox.Show("Task added successfully!");
+                DatabaseManager.AddTask(
+                    txtTaskTitle.Text.Trim(),
+                    txtTaskDescription.Text.Trim(),
+                    reminder
+                );
 
-            txtTaskTitle.Clear();
-            txtTaskDescription.Clear();
+                MessageBox.Show("Task added successfully!");
 
-            LoadTasks();
+                txtTaskTitle.Clear();
+                txtTaskDescription.Clear();
+                chkSetReminder.Checked = false;
+
+                LoadTasks();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Failed to add task.\n\nError: " + ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         // =========================================
@@ -79,14 +111,29 @@ namespace CyberSecurityAwarenessBotGUI.Forms
         // =========================================
         private void btnMarkComplete_Click(object sender, EventArgs e)
         {
-            if (dgvTasks.CurrentRow == null) return;
+            if (dgvTasks.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a task first.", "No Selection",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             var task = dgvTasks.CurrentRow.DataBoundItem as CyberTask;
             if (task == null) return;
 
-            DatabaseManager.MarkCompleted(task.TaskId);
-
-            LoadTasks();
+            try
+            {
+                DatabaseManager.MarkCompleted(task.TaskId);
+                LoadTasks();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Failed to update task.\n\nError: " + ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         // =========================================
@@ -94,7 +141,12 @@ namespace CyberSecurityAwarenessBotGUI.Forms
         // =========================================
         private void btnDeleteTask_Click(object sender, EventArgs e)
         {
-            if (dgvTasks.CurrentRow == null) return;
+            if (dgvTasks.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a task first.", "No Selection",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             var task = dgvTasks.CurrentRow.DataBoundItem as CyberTask;
             if (task == null) return;
@@ -107,8 +159,19 @@ namespace CyberSecurityAwarenessBotGUI.Forms
 
             if (confirm == DialogResult.Yes)
             {
-                DatabaseManager.DeleteTask(task.TaskId);
-                LoadTasks();
+                try
+                {
+                    DatabaseManager.DeleteTask(task.TaskId);
+                    LoadTasks();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        "Failed to delete task.\n\nError: " + ex.Message,
+                        "Database Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
         }
 
