@@ -82,13 +82,15 @@ namespace CyberSecurityAwarenessBotGUI.Forms
                     ? dtpReminder.Value
                     : (DateTime?)null;
 
-                DatabaseManager.AddTask(
+                // FIX: route through TaskManager (not DatabaseManager directly)
+                // so the action gets recorded in the Activity Log.
+                string resultMessage = TaskManager.AddTask(
                     txtTaskTitle.Text.Trim(),
                     txtTaskDescription.Text.Trim(),
                     reminder
                 );
 
-                MessageBox.Show("Task added successfully!");
+                MessageBox.Show(resultMessage);
 
                 txtTaskTitle.Clear();
                 txtTaskDescription.Clear();
@@ -123,7 +125,8 @@ namespace CyberSecurityAwarenessBotGUI.Forms
 
             try
             {
-                DatabaseManager.MarkCompleted(task.TaskId);
+                // FIX: route through TaskManager so this gets logged.
+                TaskManager.MarkCompleted(task.TaskId, task.Title);
                 LoadTasks();
             }
             catch (Exception ex)
@@ -161,7 +164,8 @@ namespace CyberSecurityAwarenessBotGUI.Forms
             {
                 try
                 {
-                    DatabaseManager.DeleteTask(task.TaskId);
+                    // FIX: route through TaskManager so this gets logged.
+                    TaskManager.DeleteTask(task.TaskId, task.Title);
                     LoadTasks();
                 }
                 catch (Exception ex)
@@ -181,6 +185,7 @@ namespace CyberSecurityAwarenessBotGUI.Forms
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadTasks();
+            ActivityLogger.Log("User refreshed the task list.");
         }
     }
 }
