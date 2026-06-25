@@ -1,5 +1,21 @@
 # 🔐 Cybersecurity Awareness Chatbot (Part 1 → Part 3)
 
+# ▶ Demonstration Video for the final part{PRT3}
+
+## 🎥 Watch Me
+
+(Insert your YouTube Unlisted Video Link Here)
+
+---
+
+# 💻 GitHub Repository
+
+## 📂 View Source Code
+
+https://github.com/nhlavutelorequest/CyberSecurityAwarenessBot.git
+
+---
+
 ## 📌 Project Overview
 
 The Cybersecurity Awareness Chatbot is a C# Windows Forms desktop application designed to educate users about cybersecurity threats and safe online practices.
@@ -226,21 +242,6 @@ CyberSecurityAwarenessBotGUI
 
 ---
 
-# ▶ Demonstration Video
-
-## 🎥 Watch Me
-
-(Insert your YouTube Unlisted Video Link Here)
-
----
-
-# 💻 GitHub Repository
-
-## 📂 View Source Code
-
-https://github.com/nhlavutelorequest/CyberSecurityAwarenessBot.git
-
----
 
 # 🧪 Testing Completed
 
