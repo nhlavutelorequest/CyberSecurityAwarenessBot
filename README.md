@@ -1,372 +1,282 @@
-# CyberSecurity Awareness Chatbot – Part 2
+# 🔐 Cybersecurity Awareness Chatbot (Part 1 → Part 3)
 
-## Project Overview
+## 📌 Project Overview
 
-The CyberSecurity Awareness Chatbot is a C# application developed using Windows Forms in Visual Studio. The purpose of the chatbot is to educate users about cybersecurity threats and online safety practices through interactive conversations.
+The Cybersecurity Awareness Chatbot is a C# Windows Forms desktop application designed to educate users about cybersecurity threats and safe online practices.
 
-The chatbot provides professional and detailed explanations on important cybersecurity topics such as:
+This project was developed progressively across **Part 1, Part 2, and Part 3**, where each stage introduced additional functionality and improved user interaction, intelligence, and usability.
 
-* Password Security
+The chatbot provides educational cybersecurity guidance while simulating real-world chatbot features such as memory, sentiment detection, voice integration, task assistance, and activity tracking.
+
+---
+
+# 🎯 Project Objectives
+
+The goal of this project is to:
+
+* Educate users about cybersecurity awareness.
+* Provide detailed explanations of cybersecurity topics.
+* Simulate intelligent chatbot behaviour.
+* Improve user interaction using GUI elements.
+* Implement memory and sentiment features.
+* Introduce task management and quiz functionality.
+* Demonstrate software engineering principles and structured programming.
+
+---
+
+# 🛠 Technologies Used
+
+* C#
+* Windows Forms (.NET Framework)
+* Visual Studio
+* GitHub
+* MySQL (Part 3)
+* NuGet Packages
+* WAV Audio Integration
+
+---
+
+# ✅ PART 1 — Console Chatbot
+
+## Features Implemented
+
+### Voice Greeting
+
+* Plays a welcome voice (`greeting.wav`) when the chatbot starts.
+
+### ASCII Logo
+
+* Displays a custom cybersecurity logo.
+
+### User Interaction Loop
+
+* Continuous chatbot conversation until user exits.
+
+### Cybersecurity Topics
+
+The chatbot responds with educational explanations for:
+
+* Password Safety
 * Phishing Attacks
-* Malware and Viruses
-* Online Scams
-* VPN Security
-* Safe Browsing
-* Suspicious Links
-
-The application was enhanced from Part 1 into a more intelligent and interactive GUI-based chatbot for Part 2.
-
----
-
-# Developer Information
-
-**Project Name:** CyberSecurity Awareness Chatbot
-**Language Used:** C#
-**Framework:** .NET Windows Forms
-**IDE:** Microsoft Visual Studio
-
----
-
-# GitHub Repository
-
-## View Project
-### [View Project Here](https://github.com/nhlavutelorequest/CyberSecurityAwarenessBot.git)
-
-# YouTube Demonstration Video
-
-### [click Here and Watch the video](https://youtu.be/jFB7PFV62wc?si=97IyKBIleohrlQ00)
-
-# Features Implemented in My Part 1
-
-The following core features were developed during Part 1:
-
-## 1. Console-Based Chatbot
-
-* Created a working cybersecurity chatbot using C#
-* Implemented keyword recognition
-* Allowed users to ask cybersecurity-related questions
-
-## 2. Cybersecurity Topic Responses
-
-The chatbot responds to:
-
-* Passwords
-* Phishing
 * Safe Browsing
 * Malware
-* VPNs
 * Online Scams
+* VPN Security
 * Suspicious Links
 
-## 3. Dynamic Responses
+### Enhanced Responses
 
-* Multiple responses were implemented using arrays and random selection
-* Prevents repetitive chatbot replies
-
-## 4. ASCII Art Logo
-
-* Added a professional ASCII cybersecurity banner
-* Improved visual presentation
-
-## 5. Voice Greeting Integration
-
-* Added a `.wav` audio greeting
-* Used `SoundPlayer` for voice playback
-* Greeting plays when the chatbot starts
-
-## 6. Typing Effect
-
-* Implemented animated text output using delays
-* Improved user interaction experience
-
-## 7. Modular Programming Structure
-
-The application was separated into multiple classes:
-
-* `Program.cs`
-* `Chatbot.cs`
-* `ResponseManager.cs`
-* `CyberSecurityTips.cs`
-* `UIHelper.cs`
-* `VoiceGreeting.cs`
-
----
-
-# Features Implemented in Part 2
-
-Part 2 focused on improving intelligence, memory, GUI interaction, and user experience.
-
----
-
-## 1. Windows Forms GUI
-
-The chatbot was converted from a console application into a graphical Windows Forms application.
-
-### GUI Components Used
-
-* RichTextBox
-* TextBox
-* Buttons
-* Forms
-
-### Benefits
-
-* Improved user interaction
-* More professional appearance
-* Easier navigation
-
----
-
-## 2. Memory System
-
-A memory system was implemented using the `MemoryManager` class.
-
-### The chatbot can now:
-
-* Remember the user's name
-* Remember cybersecurity topics discussed
-* Count the number of questions asked
-* Recall information when requested
-
-### Example:
-
-User:
-
-```text
-My name is John
-```
-
-Bot:
-
-```text
-Hello John! I will remember your name.
-```
-
----
-
-## 3. Sentiment Detection
-
-A sentiment detection system was implemented.
-
-### The chatbot can identify:
-
-* Fear
-* Worry
-* Confusion
-* Curiosity
-
-### Example:
-
-User:
-
-```text
-I am scared of hackers
-```
-
-Bot:
-
-```text
-It is completely understandable to feel concerned about cybersecurity threats. Learning safe online practices is the best way to protect yourself.
-```
-
----
-
-## 4. Professional Detailed Responses
-
-The chatbot was upgraded to provide:
+Responses were improved to include:
 
 * Detailed explanations
-* Real-world examples
-* Cybersecurity statistics
-* Prevention methods
-* Actionable advice
-
-This significantly improved user understanding and project quality.
+* Examples
+* Protection methods
+* Educational guidance
 
 ---
 
-## 5. Personalized User Interaction
+# ✅ PART 2 — GUI Chatbot (Windows Forms)
 
-The chatbot now:
+## New Features Added
 
-* Greets users by name
-* Uses personalized responses
-* Maintains session context
+### Graphical User Interface
+
+Converted from Console Application to Windows Forms.
+
+### Name Memory System
+
+The chatbot:
+
+* Requests the user's name.
+* Remembers the user's name.
+* Uses personalised responses.
 
 Example:
+Hello Alex! How can I help you today?
 
-```text
-Hello Alex, how can I help you today?
+### Session Memory
+
+Stores:
+
+* User interests
+* Topics discussed
+* Number of messages
+
+### Sentiment Detection
+
+Detects emotional input.
+
+Examples:
+
+* Happy
+* Sad
+* Frustrated
+* Excited
+
+### Voice Integration
+
+Voice greeting retained from Part 1.
+
+### Rich Text Chat Interface
+
+Added:
+
+* Chat history
+* Input textbox
+* Send button
+* Clear button
+
+### Dynamic Responses
+
+Responses became:
+
+* More detailed
+* Context aware
+* Educational
+
+---
+
+# ✅ PART 3 — Intelligent Cybersecurity Assistant
+
+## New Features Added
+
+### Activity Logger
+
+Tracks chatbot actions.
+
+Examples:
+
+* Tasks added
+* Quiz started
+* User interactions
+
+---
+
+### Task Assistant
+
+Users can:
+
+* Create cybersecurity tasks
+* Set reminders
+* Mark tasks completed
+* View tasks
+
+Example:
+Add task: Enable Two-Factor Authentication
+
+---
+
+### Cybersecurity Quiz Mini-Game
+
+Interactive learning module.
+
+Features:
+
+* Multiple questions
+* Scoring
+* Feedback
+* User progress
+
+---
+
+### NLP Improvements
+
+Enhanced language understanding.
+
+Examples:
+User inputs:
+
+* remind me tomorrow
+* create task
+* update password
+
+The chatbot recognises intent.
+
+---
+
+### MySQL Integration
+
+Database implemented for:
+
+* Task storage
+* Reminder tracking
+* Task status
+
+---
+
+# 🏗 Project Structure
+
+```plaintext
+CyberSecurityAwarenessBotGUI
+│
+├── Assets
+├── Data
+├── Models
+├── Forms
+├── ResponseManager.cs
+├── MemoryManager.cs
+├── SentimentResponse.cs
+├── VoiceGreeting.cs
+├── ActivityLogger.cs
+├── TaskManager.cs
+├── QuizManager.cs
+├── Form1.cs
+└── Program.cs
 ```
 
 ---
 
-## 6. Advanced Response Management
+# ▶ Demonstration Video
 
-The `ResponseManager` class was enhanced with:
+## 🎥 Watch Me
 
-* Context-aware replies
-* Keyword detection
-* Dynamic response generation
-* Professional formatting
+(Insert your YouTube Unlisted Video Link Here)
 
 ---
 
-## 7. Voice Greeting in GUI
+# 💻 GitHub Repository
 
-The voice greeting feature from Part 1 was successfully integrated into the GUI version.
+## 📂 View Source Code
 
-### Technologies Used
-
-* `System.Media`
-* `SoundPlayer`
-* `.wav` audio file
+(Insert Your GitHub Repository Link Here)
 
 ---
 
-## 8. Chat Memory Recall
+# 🧪 Testing Completed
 
-Users can ask:
-
-```text
-Remember me
-```
-
-or
-
-```text
-Who am I?
-```
-
-The chatbot will recall stored information.
+✔ Response Testing
+✔ Memory Testing
+✔ Sentiment Testing
+✔ Voice Testing
+✔ GUI Testing
+✔ Task Testing
+✔ Quiz Testing
+✔ Database Testing
 
 ---
 
-## 9. Clear Chat and Memory System
+# 📚 Learning Outcomes
 
-A clear button was implemented to:
+This project demonstrates:
 
-* Clear the chat history
-* Reset stored memory
-* Restart the session
-
----
-
-# Classes Used in Part 2
-
-## Main Classes
-
-* `Form1.cs`
-* `ResponseManager.cs`
-* `MemoryManager.cs`
-* `SentimentResponse.cs`
-* `VoiceGreeting.cs`
-* `Prompt.cs`
-
----
-
-# Technologies and Techniques Used
-
-## Programming Concepts
-
-* Object-Oriented Programming (OOP)
-* Methods and Classes
-* Conditional Statements
-* Arrays
-* Lists
-* Randomized Responses
+* Object-Oriented Programming
 * Event-Driven Programming
+* GUI Development
+* Data Persistence
+* Memory Simulation
+* NLP Concepts
+* Software Design Principles
 
 ---
 
-## GUI Technologies
+# 👨‍💻 Developed By
 
-* Windows Forms
-* RichTextBox
-* Buttons
-* Forms
+Student Name: NHLAVUTELO MALUNGANI
 
----
-
-## Voice Integration
-
-The chatbot uses:
-
-```csharp
-SoundPlayer
-```
-
-to play a `.wav` greeting file during startup.
+Course: Diploma in Information Technology
+Module: Programming
+Institution: ROSEBANK INTERNATIONAL
 
 ---
 
-# How to Run the Project
-
-## Requirements
-
-* Visual Studio
-* .NET Framework
-* Windows OS
-
-## Steps
-
-1. Open the solution in Visual Studio
-2. Build the project
-3. Run the application
-4. Enter your name
-5. Start chatting with the bot
-
----
-
-# Example Questions
-
-Users can ask:
-
-```text
-What is phishing?
-```
-
-```text
-Explain malware
-```
-
-```text
-How do strong passwords work?
-```
-
-```text
-What is a VPN?
-```
-
-```text
-Remember me
-```
-
----
-
-# Educational Purpose
-
-This chatbot was designed to:
-
-* Promote cybersecurity awareness
-* Teach safe online behavior
-* Help users understand modern cyber threats
-* Encourage responsible internet usage
-
----
-
-# Conclusion
-
-The CyberSecurity Awareness Chatbot evolved from a simple console chatbot into a professional GUI-based intelligent assistant.
-
-The project demonstrates:
-
-* Strong C# programming skills
-* GUI development
-* Memory management
-* Sentiment analysis
-* Voice integration
-* Modular software design
-* User interaction techniques
-
-The chatbot successfully meets the objectives of Part 2 by providing a more interactive, intelligent, and professional cybersecurity learning experience.
+Thank you for reviewing this project.
