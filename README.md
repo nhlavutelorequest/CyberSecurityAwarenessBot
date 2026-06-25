@@ -238,7 +238,7 @@ CyberSecurityAwarenessBotGUI
 
 ## 📂 View Source Code
 
-(Insert Your GitHub Repository Link Here)
+https://github.com/nhlavutelorequest/CyberSecurityAwarenessBot.git
 
 ---
 
