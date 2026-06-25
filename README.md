@@ -219,6 +219,48 @@ Database implemented for:
 * Task status
 
 ---
+### MySQL Integration
+
+A MySQL database (`CyberBotDB`) is used for:
+
+* Task storage
+* Reminder tracking
+* Task completion status
+
+#### Database Setup
+
+Run the following before launching the app:
+
+```sql
+CREATE DATABASE IF NOT EXISTS CyberBotDB;
+USE CyberBotDB;
+
+CREATE TABLE IF NOT EXISTS Tasks (
+    TaskId       INT           NOT NULL AUTO_INCREMENT,
+    Title        VARCHAR(200)  NOT NULL,
+    Description  VARCHAR(500)  NOT NULL DEFAULT '',
+    ReminderDate DATETIME      NULL,
+    IsCompleted  TINYINT(1)    NOT NULL DEFAULT 0,
+    CreatedAt    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (TaskId)
+);
+```
+
+Then update the connection string in `Data/DatabaseManager.cs` with your own MySQL credentials:
+
+```csharp
+private const string ConnectionString =
+    "Server=localhost;" +
+    "Database=CyberBotDB;" +
+    "Uid=root;" +
+    "Pwd=YOUR_PASSWORD;" +
+    "SslMode=Disabled;" +
+    "AllowPublicKeyRetrieval=True;";
+```
+
+> Note: `SslMode=Disabled` and `AllowPublicKeyRetrieval=True` are required for MySQL 8+ using the `caching_sha2_password` authentication plugin with the MySql.Data connector.
+
+---
 
 # 🏗 Project Structure
 
