@@ -10,7 +10,7 @@
 
 # 💻 GitHub Repository
 
-## [📂 View Source Code](https://github.com/nhlavutelorequest/CyberSecurityAwarenessBot.git)
+# [📂 View Source Code](https://github.com/nhlavutelorequest/CyberSecurityAwarenessBot.git)
 
 
 
