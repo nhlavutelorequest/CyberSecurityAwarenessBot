@@ -2,17 +2,17 @@
 
 # ▶ Demonstration Video for the final part{PRT3}
 
-## 🎥 Watch Me
+## 🎥 Demonstration Video
 
-(Insert your YouTube Unlisted Video Link Here)
+[▶ Watch Me](PASTE_YOUR_YOUTUBE_UNLISTED_LINK_HERE)
 
 ---
 
 # 💻 GitHub Repository
 
-## 📂 View Source Code
+## [📂 View Source Code](https://github.com/nhlavutelorequest/CyberSecurityAwarenessBot.git)
 
-https://github.com/nhlavutelorequest/CyberSecurityAwarenessBot.git
+
 
 ---
 
