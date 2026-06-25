@@ -253,7 +253,7 @@ private const string ConnectionString =
     "Server=localhost;" +
     "Database=CyberBotDB;" +
     "Uid=root;" +
-    "Pwd=YOUR_PASSWORD;" +
+    "Pwd=Request@16$;" +
     "SslMode=Disabled;" +
     "AllowPublicKeyRetrieval=True;";
 ```
